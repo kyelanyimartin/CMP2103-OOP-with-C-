@@ -4,3 +4,31 @@
 // Area = sqrt(s(s-side1)(s-side2)(s-side3))
 // Example: Enter three points for a triangle: 1.5, -3.4, 4.6, 5, 9.5, -3.4 
 // The area of the triangle is 33.6
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Computes the distance between two points (x1, y1) and (x2, y2)
+double distance(double x1, double y1, double x2, double y2) {
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
+
+int main() {
+    double X1, Y1, X2, Y2, X3, Y3;
+
+    cout << "Enter three points for a triangle: ";
+    cin >> X1 >> Y1 >> X2 >> Y2 >> X3 >> Y3 ;
+
+    // Compute the three side lengths from the points
+    double side1 = distance(X1, Y1, X2, Y2);
+    double side2 = distance(X2, Y2, X3, Y3);
+    double side3 = distance(X3, Y3, X1, Y1);
+
+    // Apply Heron's formula
+    double s = (side1 + side2 + side3) / 2;
+    double area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
+
+    cout << "The area of the triangle is " << area << endl;
+
+    return 0;
+}
